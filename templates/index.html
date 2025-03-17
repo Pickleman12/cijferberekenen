@@ -2,15 +2,30 @@
 <html lang="nl">
 
 <head>
-    <meta name="google-site-verification" content="bej2aj-5jdsybArAI05aDsDDe-CitWET_NlJocKQkPg" />
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2380623771760588"
-     crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>🎓 CijferCalculator</title>
     <meta name="description" content="Bereken eenvoudig welk cijfer je nodig hebt voor jouw gewenst gemiddelde.">
+    <meta name="keywords" content="cijfer berekenen, school calculator, cijfercalculator, gemiddelde berekenen">
+    <meta name="author" content="Redouane">
 
-    <!-- Fonts, Bootstrap en iconenset ingebouwd -->
+    <!-- Open Graph voor betere social sharing -->
+    <meta property="og:title" content="🎓 CijferCalculator">
+    <meta property="og:description" content="Bereken eenvoudig welk cijfer je nodig hebt voor jouw gewenste gemiddelde.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://cijferberekenen.onrender.com/">
+    <meta property="og:image" content="https://cijferberekenen.onrender.com//static/img/preview.png">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="🎓 CijferCalculator">
+    <meta name="twitter:description" content="Bereken eenvoudig welk cijfer je nodig hebt voor jouw gewenste gemiddelde.">
+    <meta name="twitter:image" content="https://jouwdomein.nl/static/img/preview.png">
+
+    <!-- Google Search Console -->
+    <meta name="google-site-verification" content="bej2aj-5jdsybArAI05aDsDDe-CitWET_NlJocKQkPg" />
+
+    <!-- CSS en Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.min.css">
@@ -31,8 +46,7 @@
                 {% with messages = get_flashed_messages(with_categories=true) %}
                 {% if messages %}
                 {% for category, message in messages %}
-                <div class="alert alert-{{ 'danger' if category=='error' else 'success' }} alert-dismissible fade show mt-3"
-                     role="alert">
+                <div class="alert alert-{{ 'danger' if category=='error' else 'success' }} alert-dismissible fade show mt-3" role="alert">
                     {{ message }}
                     <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                 </div>
@@ -55,12 +69,12 @@
                 <form method="POST" novalidate>
                     <div class="row g-2 mb-3">
                         <div class="col-md-6">
-                            <input type="number" step="0.1" min="0" max="10" class="form-control" name="gewenst" required
-                                   placeholder="Gewenst cijfer 🎯">
+                            <label for="gewenst" class="form-label">Gewenst cijfer 🎯</label>
+                            <input type="number" step="0.1" min="0" max="10" class="form-control" name="gewenst" id="gewenst" required>
                         </div>
                         <div class="col-md-6">
-                            <input type="number" step="0.1" min="0.1" class="form-control" name="weging" required
-                                   placeholder="Weging nieuw cijfer">
+                            <label for="weging" class="form-label">Weging nieuw cijfer</label>
+                            <input type="number" step="0.1" min="0.1" class="form-control" name="weging" id="weging" required>
                         </div>
                     </div>
 
@@ -74,12 +88,12 @@
                     <div id="vorige-cijfers">
                         <div class="row g-2 mb-2">
                             <div class="col-md-5">
-                                <input type="number" step="0.1" min="0" max="10"
-                                       name="vorige_cijfers" class="form-control" required placeholder="Cijfer">
+                                <label for="vorige_cijfers" class="form-label">Cijfer</label>
+                                <input type="number" step="0.1" min="0" max="10" name="vorige_cijfers" id="vorige_cijfers" class="form-control" required>
                             </div>
                             <div class="col-md-5">
-                                <input type="number" step="0.1" min="0.1"
-                                       name="vorige_wegingen" class="form-control" required placeholder="Weging">
+                                <label for="vorige_wegingen" class="form-label">Weging</label>
+                                <input type="number" step="0.1" min="0.1" name="vorige_wegingen" id="vorige_wegingen" class="form-control" required>
                             </div>
                         </div>
                     </div>
@@ -90,16 +104,17 @@
                 </form>
             </div>
 
-            <footer class="text-center text-muted mt-3">
+            <footer class="text-center text-muted mt-3" style="font-size: 0.85rem;">
                 © {{ current_year if current_year else '2025' }} CijferCalculator by Redouane 🚀
             </footer>
         </div>
     </div>
 </div>
 
-<!-- JavaScript benodigdheden -->
+<!-- JavaScript onderaan voor snellere laadtijden -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2380623771760588" crossorigin="anonymous"></script>
 
 </body>
 </html>
