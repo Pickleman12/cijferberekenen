@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, flash
+from flask import Flask, render_template, request, redirect, url_for, flash, send_from_directory
 
 app = Flask(__name__)
 app.secret_key = '@Mangoos12'
@@ -9,7 +9,9 @@ def bereken_nodig_cijfer(gewenst, weging, cijfers, wegingen):
     benodigde_score = ((gewenst * (sum(wegingen) + weging)) - totaal) / weging
     return round(benodigde_score, 1)
 
-
+@app.route('/static/<path:filename>')
+def cached_static(filename):
+    return send_from_directory('static', filename, cache_timeout=31536000)
 @app.route('/', methods=['GET', 'POST'])
 def index():
     resultaat = None
